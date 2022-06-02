@@ -1,0 +1,76 @@
+CREATE DATABASE archive;
+USE archive;
+
+CREATE TABLE movies (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  `year`INT,
+  director VARCHAR(100) NOT NULL
+);
+
+INSERT INTO movies
+  (title, `year`, director)
+VALUES
+  ('The Matrix',1999,'Larry and Andrew Wachowski'),
+	('Forrest Gump',1994,'Robert Zemeckis'),
+	('The Godfather',1972,'Francis Ford Coppola'),
+	('Cast Away',2000,'Robert Zemeckis');
+	
+UPDATE movies SET director = "Lana and Lilly Wachowsky" WHERE id = 1;
+
+DELETE FROM movies WHERE (`year`> 1990 AND `year`<1999) AND director = "Robert Zemeckis";
+
+SELECT * FROM movies;
+
+CREATE TABLE movies (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  `year`INT,
+	director VARCHAR(100) NOT NULL
+);
+
+INSERT INTO movies
+  (title, `year`, director)
+VALUES
+  ('The Matrix',1999,'Larry and Andrew Wachowski'),
+	('Forrest Gump',1994,'Robert Zemeckis'),
+	('The Godfather',1972,'Francis Ford Coppola'),
+	('Cast Away',2000,'Robert Zemeckis');
+	
+UPDATE movies SET director = "Lana and Lilly Wachowsky" WHERE id = 1;
+
+DELETE FROM movies WHERE (`year`> 1990 AND `year`<1999) AND director = "Robert Zemeckis";
+
+SELECT * FROM movies;
+
+CREATE TABLE albums (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  album VARCHAR(100) NOT NULL,
+  `year`INT,
+	band_id INT NOT NULL,
+	FOREIGN KEY (band_id) REFERENCES bands(id)
+);
+
+INSERT INTO albums
+  (album, `year`, band_id)
+VALUES
+  ('ST.Anger',2003,1),
+	('lowa',1999,2),
+	('Master of Puppets',1986,1),
+	('The Half',2002,3),
+	('We are not your kind',2019,2);
+
+CREATE TABLE bands (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  band VARCHAR(100) NOT NULL
+);
+
+INSERT INTO bands
+  (band)
+VALUES
+  ('Metallica'),
+	('Rock'),
+	('Jazz');
+	
+	
+SELECT album,band,`year` FROM albums JOIN bands ON band_id = bands.id;
