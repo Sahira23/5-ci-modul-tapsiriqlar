@@ -25,7 +25,7 @@ const cards = [
 ];
 
 app.listen(3000, () => {
-  console.log('app litening on port 300');
+  console.log(`app litening on port 3000`);
 });
 
 app.get("/card", (req, res) => {
@@ -33,9 +33,10 @@ app.get("/card", (req, res) => {
 });
 
 app.get("/card/:id", (req, res) => {
-  const card = cards.find((card) => card.id === req.params.id);
+  const id=parseInt(req.params.id)
+  const card = cards.find((card) => card.id === id);
   if (!card) {
-    res.status(404).send("there is no card with this id");
+    res.status(404).send("Something went wrong");
   }
-  res.status(200).json(card);
+  res.status(200).send(card);
 });
