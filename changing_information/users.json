@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "Islam",
+      "position": "director"
+    },
+    {
+      "id": 2,
+      "name": "Zeyneb",
+      "job": "employee"
+    },
+    {
+      "id": 3,
+      "name": "Sahira",
+      "position": "employee"
+    }
+  ]
